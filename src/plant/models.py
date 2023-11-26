@@ -19,13 +19,20 @@ class Plant(models.Model):
         self.save()
 
     def __str__(self):
-        return self.scientific_name
+        return self.name
 
 class PlantCreate(models.Model):
     name = models.CharField(max_length=255)
-    price = models.CharField(max_length=100)
+    price = models.CharField(max_length=255,default="")
     description = models.TextField(default="") 
     image_url = models.URLField(default="")
 
     def get_absolute_url(self):
-       return reverse('your_model_detail', kwargs={'pk': self.pk})
+       return reverse('UserInput', kwargs={'pk': self.pk})
+class UserInput(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.CharField(max_length=255,default="")
+    description = models.TextField(default="") 
+    image_url = models.URLField(default="")
+    def get_absolute_url(self):
+        return reverse('')
